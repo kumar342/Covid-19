@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { Form } from "react-bootstrap";
 import Axios from "axios";
+import "./Home.css";
 
 export default class Home extends Component {
   state = {
-    data: [],
+    CovidImage: "🦠",
     global: {
       confirmed: {
         total: 0,
@@ -126,56 +127,60 @@ export default class Home extends Component {
   };
   render() {
     return (
-      <div className="select">
-        <h1> Covid-19</h1>
-        <Form.Group
-          controlId="exampleForm.ControlSelect2"
-          onChange={this.countryChanger}
-        >
-          <Form.Control as="select" multiple>
-            <option>Global</option>
-            {this.state.Countries.map((item, i) => {
-              return (
-                <option key={i} value={item.Country}>
-                  {item.Country}
-                </option>
-              );
-            })}
-          </Form.Control>
-        </Form.Group>
-        <br />
-        <br />
-        <div className="row">
-          <div className="col-sm-4">
-            <div className="card">
-              <div className="card-body">
-                <h5 className="card-title"> confirmed</h5>
-                <p className="card-text">
-                  Total : {this.state.Country.TotalConfirmed} <br />
-                  New : {this.state.Country.NewConfirmed}
-                </p>
+      <div>
+        <div className="Home-img">
+          <br />
+
+          <Form.Group
+            className="dropdown"
+            controlId="exampleForm.ControlSelect2"
+            onChange={this.countryChanger}
+          >
+            <Form.Control as="select" multiple>
+              <option>Global</option>
+              {this.state.Countries.map((item, i) => {
+                return (
+                  <option key={i} value={item.Country}>
+                    {item.Country}
+                  </option>
+                );
+              })}
+            </Form.Control>
+          </Form.Group>
+          <br />
+          <br />
+          <div className="row">
+            <div className="col-sm-4">
+              <div className="card">
+                <div className="bg-info">
+                  <h5 className="card-title"> Confirmed</h5>
+                  <p className="card-text">
+                    Total : {this.state.Country.TotalConfirmed} <br />
+                    New : {this.state.Country.NewConfirmed}
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="col-sm-4">
-            <div className="card">
-              <div className="card-body">
-                <h5 className="card-title">Recovered</h5>
-                <p className="card-text">
-                  Total : {this.state.Country.TotalRecovered} <br />
-                  New : {this.state.Country.NewRecovered}
-                </p>
+            <div className="col-sm-4">
+              <div className="card">
+                <div className="bg-success">
+                  <h5 className="card-title">Recovered</h5>
+                  <p className="card-text">
+                    Total : {this.state.Country.TotalRecovered} <br />
+                    New : {this.state.Country.NewRecovered}
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="col-sm-4">
-            <div className="card">
-              <div className="card-body">
-                <h5 className="card-title"> Deaths</h5>
-                <p className="card-text">
-                  Total : {this.state.Country.TotalDeaths} <br />
-                  New : {this.state.Country.NewDeaths}
-                </p>
+            <div className="col-sm-4">
+              <div className="card">
+                <div className="bg-danger">
+                  <h5 className="card-title"> Deaths</h5>
+                  <p className="card-text">
+                    Total : {this.state.Country.TotalDeaths} <br />
+                    New : {this.state.Country.NewDeaths}
+                  </p>
+                </div>
               </div>
             </div>
           </div>

@@ -9,7 +9,7 @@ export default class App extends Component {
     return (
       <div>
         <Header />
-        <Home />
+        <Home /> <br />
         <Footer />
       </div>
     );

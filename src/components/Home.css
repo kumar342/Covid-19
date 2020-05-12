@@ -1,0 +1,32 @@
+.Home-img {
+  background-image: url("https://image.shutterstock.com/image-illustration/coronavirus-maps-disease-2019-situation-600w-1700833465.jpg");
+}
+.Covid {
+  font-size: 25px;
+  margin-right: 86%;
+  margin-left: 1%;
+  background-color: whitesmoke;
+  border-radius: 1cm;
+  justify-content: space-evenly;
+}
+.dropdown {
+  margin-left: 20%;
+  margin-top: 10%;
+  margin-right: 60%;
+}
+.row {
+  margin-left: 0%;
+  margin-bottom: 10%;
+}
+.bg-info {
+  margin: 0%;
+  margin-top: 10%;
+}
+.bg-success {
+  margin: 0%;
+  margin-top: 10%;
+}
+.bg-danger {
+  margin: 0%;
+  margin-top: 10%;
+}
