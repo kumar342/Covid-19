@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Form, Card, CardGroup } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import Axios from "axios";
 
 export default class Home extends Component {
@@ -67,10 +67,10 @@ export default class Home extends Component {
       .catch((err) => console.log(err));
   };
 
-  countryChanger = (e) => {
+  countryChanger = async (e) => {
     let country = e.target.value;
     console.log(country);
-    this.setState({
+    await this.setState({
       Country: {
         country: 0,
         confirmed: {
@@ -101,6 +101,7 @@ export default class Home extends Component {
           console.log(singleCountryDetails);
         }
       });
+
       this.setState({
         Country: {
           country: singleCountryDetails.Country,
@@ -119,8 +120,9 @@ export default class Home extends Component {
           Date: singleCountryDetails.Date,
         },
       });
-      console.log(this.state.Country);
+      this.setState({ Country: singleCountryDetails });
     }
+    console.log(this.state.Country);
   };
   render() {
     return (
@@ -143,39 +145,40 @@ export default class Home extends Component {
         </Form.Group>
         <br />
         <br />
-        <div className="card-style">
-          <CardGroup>
-            <Card>
-              <Card.Img variant="top" src="holder.js/100px160" />
-              <Card.Body>
-                <Card.Title>Card title</Card.Title>
-                <Card.Text>card 1</Card.Text>
-              </Card.Body>
-              <Card.Footer>
-                <small className="text-muted">Last updated 3 mins ago</small>
-              </Card.Footer>
-            </Card>
-            <Card>
-              <Card.Img variant="top" src="holder.js/100px160" />
-              <Card.Body>
-                <Card.Title>Card title</Card.Title>
-                <Card.Text>card 2</Card.Text>
-              </Card.Body>
-              <Card.Footer>
-                <small className="text-muted">Last updated 3 mins ago</small>
-              </Card.Footer>
-            </Card>
-            <Card>
-              <Card.Img variant="top" src="holder.js/100px160" />
-              <Card.Body>
-                <Card.Title>Card title</Card.Title>
-                <Card.Text>card 3</Card.Text>
-              </Card.Body>
-              <Card.Footer>
-                <small className="text-muted">Last updated 3 mins ago</small>
-              </Card.Footer>
-            </Card>
-          </CardGroup>
+        <div className="row">
+          <div className="col-sm-4">
+            <div className="card">
+              <div className="card-body">
+                <h5 className="card-title"> confirmed</h5>
+                <p className="card-text">
+                  Total : {this.state.Country.TotalConfirmed} <br />
+                  New : {this.state.Country.NewConfirmed}
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="col-sm-4">
+            <div className="card">
+              <div className="card-body">
+                <h5 className="card-title">Recovered</h5>
+                <p className="card-text">
+                  Total : {this.state.Country.TotalRecovered} <br />
+                  New : {this.state.Country.NewRecovered}
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="col-sm-4">
+            <div className="card">
+              <div className="card-body">
+                <h5 className="card-title"> Deaths</h5>
+                <p className="card-text">
+                  Total : {this.state.Country.TotalDeaths} <br />
+                  New : {this.state.Country.NewDeaths}
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     );
