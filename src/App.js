@@ -1,7 +1,16 @@
 import React, { Component } from "react";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Home from "./components/Home";
 
 export default class App extends Component {
   render() {
-    return <h1>Covid-19 Tracking system</h1>;
+    return (
+      <div>
+        <Header />
+        <Home />
+        <Footer />
+      </div>
+    );
   }
 }
