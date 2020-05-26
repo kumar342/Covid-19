@@ -28,8 +28,6 @@ export default class Home extends Component {
   componentDidMount = () => {
     Axios.get("https://api.covid19api.com/summary")
       .then((res) => {
-        console.log(res);
-
         this.setState({
           Countries: res.data.Countries,
           Date: res.data.Date.substring(0, 10),
@@ -86,7 +84,6 @@ export default class Home extends Component {
         },
       });
       this.setState({ Country: singleCountryDetails });
-      console.log(this.state.Country);
     }
   };
   render() {

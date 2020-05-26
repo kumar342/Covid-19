@@ -6,12 +6,8 @@ export default class Footer extends Component {
       <center>
         <div className="d-flex flex-column">
           <footer className="footer">
-            <div>
-              <a href="https://coreui.io">CoreUI</a>
-              <span>&copy; 2020 creativeLabs.</span>
-            </div>
             <div className="ml-auto">
-              <span>Developed by</span> <span> </span>
+              <h1>Developed by</h1> <span> </span>
               <a href="https://github.com/kumar342/Covid-19">Hemanth Kumar</a>
             </div>
           </footer>
