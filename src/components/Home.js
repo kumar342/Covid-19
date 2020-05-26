@@ -5,21 +5,6 @@ import "./Home.css";
 
 export default class Home extends Component {
   state = {
-    CovidImage: "🦠",
-    global: {
-      confirmed: {
-        total: 0,
-        new: 0,
-      },
-      recovered: {
-        total: 0,
-        new: 0,
-      },
-      deaths: {
-        total: 0,
-        new: 0,
-      },
-    },
     Country: {
       country: "",
       confirmed: {
@@ -46,31 +31,15 @@ export default class Home extends Component {
         console.log(res);
 
         this.setState({
-          global: {
-            confirmed: {
-              total: res.data.Global.TotalConfirmed,
-              new: res.data.Global.NewConfirmed,
-            },
-            recovered: {
-              total: res.data.Global.TotalRecovered,
-              new: res.data.Global.NewConfirmed,
-            },
-            deaths: {
-              total: res.data.Global.TotalDeaths,
-              new: res.data.Global.NewDeaths,
-            },
-          },
           Countries: res.data.Countries,
           Date: res.data.Date.substring(0, 10),
         });
-        console.log(this.state.Countries);
       })
       .catch((err) => console.log(err));
   };
 
   countryChanger = async (e) => {
     let country = e.target.value;
-    console.log(country);
     await this.setState({
       Country: {
         country: 0,
@@ -91,15 +60,10 @@ export default class Home extends Component {
     });
 
     let singleCountryDetails;
-    if (country === "Global") {
-      this.setState({
-        singleCountryDetails: false,
-      });
-    } else {
+    if (this.state.Countries) {
       this.state.Countries.map((res) => {
         if (country === res.Country) {
           singleCountryDetails = res;
-          console.log(singleCountryDetails);
         }
       });
 
@@ -122,25 +86,27 @@ export default class Home extends Component {
         },
       });
       this.setState({ Country: singleCountryDetails });
+      console.log(this.state.Country);
     }
-    console.log(this.state.Country);
   };
   render() {
     return (
       <div>
         <div className="Home-img">
           <br />
-
           <Form.Group
             className="dropdown"
             controlId="exampleForm.ControlSelect2"
             onChange={this.countryChanger}
           >
             <Form.Control as="select" multiple>
-              <option>Global</option>
               {this.state.Countries.map((item, i) => {
                 return (
-                  <option key={i} value={item.Country}>
+                  <option
+                    className="cursor-pointer"
+                    key={i}
+                    value={item.Country}
+                  >
                     {item.Country}
                   </option>
                 );
@@ -150,7 +116,7 @@ export default class Home extends Component {
           <br />
           <br />
           <div className="row">
-            <div className="col-sm-4">
+            <div className="col-sm-4 shadow">
               <div className="card">
                 <div className="bg-info">
                   <h5 className="card-title"> Confirmed</h5>
@@ -161,7 +127,7 @@ export default class Home extends Component {
                 </div>
               </div>
             </div>
-            <div className="col-sm-4">
+            <div className="col-sm-4 shadow">
               <div className="card">
                 <div className="bg-success">
                   <h5 className="card-title">Recovered</h5>
@@ -172,7 +138,7 @@ export default class Home extends Component {
                 </div>
               </div>
             </div>
-            <div className="col-sm-4">
+            <div className="col-sm-4 ">
               <div className="card">
                 <div className="bg-danger">
                   <h5 className="card-title"> Deaths</h5>

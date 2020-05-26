@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Navbar, Nav, Form, FormControl, Button } from "react-bootstrap";
+import { Navbar, Nav } from "react-bootstrap";
 
 export default class Header extends Component {
   state = {
@@ -13,12 +13,10 @@ export default class Header extends Component {
           C{this.state.CovidImg}vid-19 Tracking System
         </Navbar.Brand>
         <Nav className="mr-auto">
-          <Nav.Link href="#features">About Covid-19</Nav.Link>
+          <Nav.Link href="https://medium.com/@hemanth2gundala/coronavirus-covid-19-ddc9d38c7c9e">
+            About Covid-19
+          </Nav.Link>
         </Nav>
-        <Form inline>
-          <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-          <Button variant="outline-info">Search</Button>
-        </Form>
       </Navbar>
     );
   }
