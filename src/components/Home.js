@@ -6,7 +6,6 @@ import "./Home.css";
 export default class Home extends Component {
   state = {
     Country: {
-      country: "",
       confirmed: {
         total: 0,
         new: 0,
@@ -21,6 +20,7 @@ export default class Home extends Component {
       },
       Date: null,
     },
+    country: "",
     Countries: [],
     Date: null,
     singleCountryDetails: false,
@@ -38,6 +38,9 @@ export default class Home extends Component {
 
   countryChanger = async (e) => {
     let country = e.target.value;
+    await this.setState({ country: country });
+    console.log(this.state.country);
+
     await this.setState({
       Country: {
         country: 0,
@@ -112,11 +115,12 @@ export default class Home extends Component {
           </Form.Group>
           <br />
           <br />
+
           <div className="row">
             <div className="col-sm-4 shadow">
               <div className="card">
                 <div className="bg-info">
-                  <h5 className="card-title"> Confirmed</h5>
+                  <h5 className="card-title">{this.state.country} Confirmed</h5>
                   <p className="card-text">
                     Total : {this.state.Country.TotalConfirmed} <br />
                     New : {this.state.Country.NewConfirmed}
@@ -127,7 +131,7 @@ export default class Home extends Component {
             <div className="col-sm-4 shadow">
               <div className="card">
                 <div className="bg-success">
-                  <h5 className="card-title">Recovered</h5>
+                  <h5 className="card-title">{this.state.country} Recovered</h5>
                   <p className="card-text">
                     Total : {this.state.Country.TotalRecovered} <br />
                     New : {this.state.Country.NewRecovered}
@@ -138,7 +142,7 @@ export default class Home extends Component {
             <div className="col-sm-4 ">
               <div className="card">
                 <div className="bg-danger">
-                  <h5 className="card-title"> Deaths</h5>
+                  <h5 className="card-title"> {this.state.country} Deaths</h5>
                   <p className="card-text">
                     Total : {this.state.Country.TotalDeaths} <br />
                     New : {this.state.Country.NewDeaths}
