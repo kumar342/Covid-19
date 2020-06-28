@@ -62,7 +62,7 @@ export default class Home extends Component {
 
     let singleCountryDetails;
     if (this.state.Countries) {
-      this.state.Countries.map((res) => {
+      this.state.Countries.forEach((res) => {
         if (country === res.Country) {
           singleCountryDetails = res;
         }
